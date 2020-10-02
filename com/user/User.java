@@ -71,9 +71,9 @@ public class User {
 	public String checkPassword() {
 		String input = null;
 		while(true) {
-			System.out.println("\nEnter Password ( min 8 characters )\n");
+			System.out.println("\nEnter Password ( min 8 characters , one uppercase , one number )\n");
 			input = sc.nextLine();
-			String regex = "(?=.*[A-Z]).{8,}";
+			String regex = "(?=.*[A-Z])(?=.*[0-9]).{8,}";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
 			if(matcher.find())
