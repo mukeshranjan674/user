@@ -12,7 +12,7 @@ public class User {
 		String input = null;
 		while(true) {
 			System.out.println("\nEnter First Name\n");
-			input = sc.next();
+			input = sc.nextLine();
 			String regex = "^[A-Z][a-z]{2,}$";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
@@ -27,7 +27,7 @@ public class User {
 		String input = null;
 		while(true) {
 			System.out.println("\nEnter Last Name\n");
-			input = sc.next();
+			input = sc.nextLine();
 			String regex = "^[A-Z][a-z]{2,}$";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
@@ -42,7 +42,7 @@ public class User {
 		String input = null;
 		while(true) {
 			System.out.println("\nEnter e-mail\n");
-			input = sc.next();
+			input = sc.nextLine();
 			String regex = "^(abc)([-/./+_]?[a-z0-9]+)?[a-z0-9]*[@](bl)[/.](co)([/.]?(in))?$";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
@@ -50,6 +50,21 @@ public class User {
 				break;
 			else 
 				System.out.println("Invalid email !  Please try again...");
+		}
+		return input;
+	}
+	public String checkMobile() {
+		String input = null;
+		while(true) {
+			System.out.println("\nEnter Mobile Number    e.g., 91 9988557744");
+			input = sc.nextLine();
+			String regex = "^[0-9]{1,3}[ ][6-9]{1}[0-9]{9}$";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(input);
+			if(matcher.find())
+				break;
+			else 
+				System.err.println("Invalid Mobile Number !  Please try again...");
 		}
 		return input;
 	}
@@ -61,6 +76,7 @@ public class User {
 		String firstName = user.checkFirstName();
 		String lastName = user.checkLastName();
 		String email = user.checkEmail();
+		String mobile = user.checkMobile();
 	}
 
 }
