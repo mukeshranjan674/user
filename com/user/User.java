@@ -19,7 +19,7 @@ public class User {
 			if(matcher.find())
 				break;
 			else 
-				System.out.println("Invalid First Name !  Please try again...");
+				System.err.println("Invalid First Name !  Please try again...");
 		}
 		return input;
 	}
@@ -34,7 +34,7 @@ public class User {
 			if(matcher.find())
 				break;
 			else 
-				System.out.println("Invalid Last Name !  Please try again...");
+				System.err.println("Invalid Last Name !  Please try again...");
 		}
 		return input;
 	}
@@ -49,7 +49,7 @@ public class User {
 			if(matcher.find())
 				break;
 			else 
-				System.out.println("Invalid email !  Please try again...");
+				System.err.println("Invalid email !  Please try again...");
 		}
 		return input;
 	}
@@ -68,6 +68,21 @@ public class User {
 		}
 		return input;
 	}
+	public String checkPassword() {
+		String input = null;
+		while(true) {
+			System.out.println("\nEnter Password ( min 8 characters )\n");
+			input = sc.nextLine();
+			String regex = ".{8,}";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(input);
+			if(matcher.find())
+				break;
+			else 
+				System.err.println("Invalid Password !  Please try again...");
+		}
+		return input;
+	}
 	
 	public static void main(String[] args) {
 		
@@ -77,6 +92,7 @@ public class User {
 		String lastName = user.checkLastName();
 		String email = user.checkEmail();
 		String mobile = user.checkMobile();
+		String password = user.checkPassword();
 	}
 
 }
