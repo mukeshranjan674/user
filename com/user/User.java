@@ -13,7 +13,7 @@ public class User {
 		while(true) {
 			System.out.println("\nEnter First Name\n");
 			input = sc.next();
-			String regex = "^[A-Z][a-z]{2,}";
+			String regex = "^[A-Z][a-z]{2,}$";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
 			if(matcher.find())
@@ -23,12 +23,28 @@ public class User {
 		}
 		return input;
 	}
+	public String checkLastName() {
+		String input = null;
+		while(true) {
+			System.out.println("\nEnter Last Name\n");
+			input = sc.next();
+			String regex = "^[A-Z][a-z]{2,}$";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(input);
+			if(matcher.find())
+				break;
+			else 
+				System.out.println("Invalid Last Name !  Please try again...");
+		}
+		return input;
+	}
 	
 	public static void main(String[] args) {
 		
 		System.out.println("***** Welcomt to User Registration System ***** ");
 		User user = new User();
 		String firstName = user.checkFirstName();
+		String lastName = user.checkLastName();
 	}
 
 }
