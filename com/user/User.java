@@ -38,6 +38,21 @@ public class User {
 		}
 		return input;
 	}
+	public String checkEmail() {
+		String input = null;
+		while(true) {
+			System.out.println("\nEnter e-mail\n");
+			input = sc.next();
+			String regex = "^(abc)([-/./+_]?[a-z0-9]+)?[a-z0-9]*[@](bl)[/.](co)([/.]?(in))?$";
+			Pattern pattern = Pattern.compile(regex);
+			Matcher matcher = pattern.matcher(input);
+			if(matcher.find())
+				break;
+			else 
+				System.out.println("Invalid email !  Please try again...");
+		}
+		return input;
+	}
 	
 	public static void main(String[] args) {
 		
@@ -45,6 +60,7 @@ public class User {
 		User user = new User();
 		String firstName = user.checkFirstName();
 		String lastName = user.checkLastName();
+		String email = user.checkEmail();
 	}
 
 }
