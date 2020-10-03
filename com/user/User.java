@@ -71,9 +71,9 @@ public class User {
 	public String checkPassword() {
 		String input = null;
 		while(true) {
-			System.out.println("\nEnter Password ( min 8 characters , one uppercase , one number )\n");
+			System.out.println("\nEnter Password ( min 8 characters , one uppercase , one number , one special char )\n");
 			input = sc.nextLine();
-			String regex = "(?=.*[A-Z])(?=.*[0-9]).{8,}";
+			String regex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9 ]).{8,}";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
 			if(matcher.find())
@@ -93,6 +93,7 @@ public class User {
 		String email = user.checkEmail();
 		String mobile = user.checkMobile();
 		String password = user.checkPassword();
+		System.out.println("\nUser Details :\n" + "Name: " + firstName + " " + lastName + "\nemail: " + email + "\nMobile: " + mobile );
 	}
 
 }
