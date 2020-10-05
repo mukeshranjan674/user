@@ -43,7 +43,7 @@ public class User {
 		while(true) {
 			System.out.println("\nEnter e-mail\n");
 			input = sc.nextLine();
-			String regex = "^(abc)([-/./+_]?[a-z0-9]+)?[a-z0-9]*[@](bl)[/.](co)([/.]?(in))?$";
+			String regex = "^(abc)([-/./+_]?[a-z0-9]+)?[a-z0-9]*[@][a-z1-9]+[/.][a-z]{2,3}([/.]?[a-z]{2,3})?$";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
 			if(matcher.find())
@@ -83,6 +83,21 @@ public class User {
 		}
 		return input;
 	}
+	public void emailValidation() {
+		System.out.println("*** Sample email check ***");
+		String[] emails = new String[] { "abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com",
+				"abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com", "abc",
+				"abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*@gmail.com",
+				"abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com", "abc@gmail.com.1a",
+				"abc@gmail.com.aa.au" };
+		
+		for (String currentEmail : emails) {
+			boolean result = 
+			currentEmail.matches("^(abc)([-/./+_]?[a-z0-9]+)?[a-z0-9]*[@][a-z1-9]+[/.][a-z]{2,3}([/.]?[a-z]{2,3})?$");
+			
+			System.out.println("\n" + currentEmail + ": " + result);
+		}	
+	}
 	
 	public static void main(String[] args) {
 		
@@ -93,7 +108,8 @@ public class User {
 		String email = user.checkEmail();
 		String mobile = user.checkMobile();
 		String password = user.checkPassword();
-		System.out.println("\nUser Details :\n" + "Name: " + firstName + " " + lastName + "\nemail: " + email + "\nMobile: " + mobile );
+		System.out.println("\nUser Details :\n" + "Name: " + firstName + " " + lastName + "\nemail: " + email + "\nMobile: " + mobile + "\n" );
+		user.emailValidation();
 	}
 
 }
