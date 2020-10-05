@@ -73,7 +73,7 @@ public class User {
 		while(true) {
 			System.out.println("\nEnter Password ( min 8 characters , one uppercase , one number , one special char )\n");
 			input = sc.nextLine();
-			String regex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9 ]).{8,}";
+			String regex = "(?=.{8,})(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]*[^a-zA-Z0-9 ][a-zA-Z0-9]*";
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(input);
 			if(matcher.find())
